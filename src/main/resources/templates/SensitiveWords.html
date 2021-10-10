@@ -1,0 +1,35 @@
+#parse("header.html")
+<style>
+    #a{
+        top: 100px;
+        width: 250px;
+        height: 200px;
+        left: 500px;
+        background-color: wheat;
+        position: fixed;
+    }
+</style>
+<link rel="stylesheet" href="../styles/index.css">
+<link rel="stylesheet" href="../styles/detail.css">
+<div id ="a" align="center">
+    <b>已有的屏蔽词:</b>
+    #if($SensitiveWords)
+    <p>$!{SensitiveWords}</p>
+    #else
+    没有屏蔽词！
+    #end
+    <form style="border: none" action="/addSensitiveWords" method="post">
+        <td>
+            <input id = "add" type="text" name="words">
+            <input type="submit" value="添加屏蔽词">
+        </td>
+    </form>
+    <form style="border: none" action="/delSensitiveWords" method="post">
+        <td>
+            <input id = "delete" type="text" name="words">
+            <input type="submit" value="删除屏蔽词">
+        </td>
+    </form>
+</div>
+#parse("js.html")
+#parse("footer.html")

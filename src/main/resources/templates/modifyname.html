@@ -1,0 +1,52 @@
+#parse("header.html")
+<link rel="stylesheet" href="../styles/index.css">
+<link rel="stylesheet" href="../styles/detail.css">
+<link rel="dns-prefetch" href="">
+<link rel="stylesheet" href="../styles/login.css">
+<body class="zhi  no-auth">
+<div class="index-main">
+    <div class="index-main-body">
+        <div class="index-header">
+            <h2 class="subtitle">
+                #if($msg)
+                $!{msg}
+                #else
+                修改用户名
+                #end
+            </h2>
+        </div>
+        <div class="desk-front sign-flow clearfix sign-flow-simple">
+            <div class="view view-signin" data-za-module="SignInForm" style="display: block;">
+                <form action="" id="regloginform" method="post">
+                    <input type="hidden" name="_xsrf" value="21aa1c8d254df2899b23ab9afbd62a53">
+                    <div class="group-inputs">
+                        <input id = "UserId" type="hidden" name = "UserId" value="$!{user.id}">
+                        <div class="email input-wrapper">
+                            <input id = "Password" type="password" name="Password" placeholder="请输入密码" required="">
+                        </div>
+                        <div class="input-wrapper">
+                            <input id = "newname" type="text" name="newname" placeholder="请输入新用户名" required="">
+                        </div>
+                    </div>
+                    <div class="button-wrapper command clearfix">
+                        <button class="sign-button submit" type="submit" onclick="form=document.getElementById('regloginform');form.action='/modifyname/'">确认修改</button>
+                        <button id="clear" class="sign-button submit" type="button" onclick="form=document.getElementById('regloginform');form.action=''">清空信息</button>
+                    </div>
+                    <div class="signin-misc-wrapper clearfix">
+                        <a class="unable-login" href="/modify">修改密码</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $("#clear").click(function () {
+        $("#Password").val('');
+        $("#newname").val('');
+    })
+</script>
+</body>
+#parse("js.html")
+#parse("footer.html")
